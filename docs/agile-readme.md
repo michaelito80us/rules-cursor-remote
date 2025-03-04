@@ -189,7 +189,7 @@ graph LR
 
 1. **Documentation**
 
-   - Keep PRD and Architecture documents updated
+   - AI will keep PRD and Architecture documents updated - sometimes you will need to tell it to update the prd and arch files as needed.
    - Document all significant decisions
    - Maintain clear implementation notes
 
@@ -245,10 +245,7 @@ The workflow is designed to work seamlessly with Cursor's AI capabilities:
    - AI suggests improvements
    - AI maintains consistency
 
-## Additional Resources
+## Cost Savings
 
-For more detailed information about specific aspects of the workflow, refer to:
-
-- [Product Requirements Document Template](../.cursor/rules/901-prd.mdc)
-- [Architecture Document Template](../.cursor/rules/902-arch.mdc)
-- [Story Template](../.cursor/rules/903-story.mdc)
+- LLMs outside of cursory if you have them available, such as ChatGPT, Claude, Gemini, etc are also great to generate the initial PRD and architecture, and really itterate on them.
+- Within Cursor, currently you can use DeepSeek R1 for example which seems to be free and also decent and udpating PRD and architecture - but I have found it to be a bit less reliable than using Claude to follow the format I want - but much cheaper, if trying to do it all in cursor planning.
