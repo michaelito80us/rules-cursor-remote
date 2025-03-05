@@ -20,7 +20,6 @@ globs: **/arch*.md
 #### 2. Status
 - Draft
 - Approved
-- Complete
 
 #### 3. Technical Summary
 
@@ -29,13 +28,15 @@ globs: **/arch*.md
 Table listing choices for languages, libraries, infra, etc...
 
 - column for technology
-- column for descrpition
+- column for description
 
-#### 5. Arhictectural Diagrams
+#### 5. Architectural Diagrams
 
-- Mermaid Diagrams
+- Mermaid Diagrams as needed
 
 #### 6. Data Models, API Specs, Schemas, etc...
+
+- not exhaustive - but key ideas that need to be retained and followed across stories
 
 #### 7. Project Structure
 
@@ -80,7 +81,7 @@ graph TD
     C --> F[Analytics Engine]
     D --> G[Notification Service]
     F --> H[ML Predictor]
-    
+
     style A fill:#f9f,stroke:#333
     style B fill:#bbf,stroke:#333
     style C fill:#bfb,stroke:#333
@@ -103,6 +104,7 @@ sequenceDiagram
 ## Data Models
 
 ### Sensor Reading Schema
+
 ```json
 {
   "sensor_id": "string",
@@ -120,7 +122,8 @@ sequenceDiagram
 ```
 
 ## Project Structure
-```
+
+```bash
 /
 ├── /services
 │   ├── /gateway        # Sensor data ingestion

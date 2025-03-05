@@ -2,6 +2,8 @@
 
 [Video Demo and Walkthrough](https://youtu.be/jEhvwYkI-og) - More cursor videos coming so please subscribe if you like the video!
 
+NOTE: This has been tested with Claud Sonnet 3.5 - YMMV with other models reliability.
+
 This is a template for establishing automatic generation of self improving granular rules for AI agents using Cursor's rule system. The core philosophy is that users should never need to manually create or update rules - instead, the AI agent handles rule creation and maintenance through natural language requests in a consistent format and style that:
 
 - Ensures Rules are used automatically when appropriate
@@ -19,9 +21,8 @@ This template fixes issues with other proposed rules generators by ensuring rule
 Also a lot of research has gone into the best way to format rules - as there are so many competing and half baked theories - through a lot of research, mining forums and studies, the official docs for Claude prompt engineering, Cline recommendations, cursor developer comments in reddit and forums, the rules will follow a general format of:
 
 - Frontmatter with description and globs in proper yaml format
-- Semantic versioning
 - Markdown formatting
-- XML tags for specific use cases, callouts, rules and highlights
+- Sparring use of XML tags for specific use cases, callouts, rules and highlights
 - Mermaid flowcharts or sequence diagrams to succinctly drive the AIs understanding
 - Keep rules as short as possible while being maximally effective
 - Include examples of good and bad patterns in rules as this is a big aid to the AI Agent LLM in understanding the rule and applying it correctly
@@ -77,8 +78,8 @@ This template drastically improves how you can work with the AI in composer mode
 
 The workflow templates and process documentation are now organized in two locations for maximum flexibility:
 
-1. `.cursor/rules/` - Contains the core rule to generate well formatted AI optimized rules along with some workflow templates (901-prd.mdc, 902-arch.mdc, 903-story.mdc) that are automatically applied when working with corresponding file types if you are going to follow the agile workflow outlined in the agile-readme.md file.
-2. `xnotes/` - Contains workflow documentation and templates that can be used with Cursor's Notepads feature for a more lightweight approach pr applied to rules for AI instead.
+1. `.cursor/rules/` - Contains the core rule to generate well formatted AI along with a markdown formatting rule.
+2. `xnotes/` - Contains workflow documentation and templates that can be used with Cursor's Notepads feature for a more lightweight approach pr applied to rules for AI instead. Also contains a 801-workflow.mdc, 901-prd.mdc, 902-arch.mdc, 903-story.mdc that can optionally be copied to the rules folder if so desired to try using the agile memory workflow. Nothing in this folder is critical for the rules generation to work - but is a nice groundwork for using the agile workflow with cursor agent to build increamentally.
 
 ### xnotes
 

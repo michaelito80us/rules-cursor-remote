@@ -1,23 +1,11 @@
----
-description: ALWAYS use when creating or updating story files to ensure proper tracking and implementation. This rule enforces consistent story structure with tasks, context, and progress tracking.
-globs: **/*.story.md
----
-# Story Template Standards
+# Story Template
 
 <version>1.0.0</version>
 
 ## Requirements
 
 - Follow standardized story structure
-- Include all required sections
-- Track progress accurately
-- Maintain implementation history
-- Stories must be organized under Epic directories
-
-## File Structure
-
-Stories must be placed in their Epic's directory:
-`.ai/epic-{n}/story-{m}.story.md`
+- Include all required sections - some will be empty to start with
 
 ## Story Structure
 
@@ -62,7 +50,8 @@ Story Points: {Story Points (1 SP = 1 day of Human Development = 10 minutes of A
    1. - [ ] {Test Subtasks (as needed)}
    2. - [ ] {Subtask}
 
-Note: 
+Note:
+
 - Use - [x] for completed items
 - Use ~~skipped/cancelled items~~
 - Follow TDD - Start with Writing Tests Subtask
@@ -70,26 +59,32 @@ Note:
 ### 7. Additional Sections
 
 #### Constraints
+
 - List any technical or business constraints
 
 #### Data Models / Schema
+
 - Database schemas
 - API request/response models
 - Interfaces/types
 
 #### Structure
+
 - Module organization
 - File structure plan
 
 #### Diagrams
+
 - Mermaid diagrams as needed
 
 #### Dev Notes
+
 - Implementation commentary
 - Important considerations
 - Technical decisions
 
 #### Chat Command Log
+
 - Commands from User
 - Agent Question and Users Response
 
@@ -120,38 +115,39 @@ Story Points: 2
 ## Tasks
 
 1. - [x] Create Chessboard Grid
-   1. - [x] Implement 8x8 board layout
-   2. - [x] Add square coloring
-   3. - [x] Write grid tests
+   1. - [x] Write grid tests
+   2. - [x] Implement 8x8 board layout
+   3. - [x] Add square coloring
 2. - [ ] Add Chess Pieces
-   1. - [ ] Create piece components
-   2. - [ ] Add piece images
-   3. - [ ] Write piece tests
+   1. - [ ] Write piece tests
+   2. - [ ] Create piece components
+   3. - [ ] Add piece images
 3. - [ ] Implement Basic Interaction
-   1. - [ ] Add click handlers
-   2. - [ ] Highlight selected square
-   3. - [ ] Write interaction tests
+   1. - [ ] Write interaction tests
+   2. - [ ] Add click handlers
+   3. - [ ] Highlight selected square
 
 ## Dev Notes
 
+- Ensure TDD is followed for all tasks that have tests, write tests first.
 - Using React for UI components
 - Chess piece SVGs from open-source library
 - Implementing responsive design for various screen sizes
 
 ## Chat Command Log
 
-- BMad: Let's implement the chessboard UI
+- MES: Let's implement the chessboard UI
 - AiAgent: Reviewing the design requirements. Should we use SVG or PNG for pieces?
-  - BMad: Let's use SVG for better scaling
+  - MES: Let's use SVG for better scaling
 - AiAgent: Grid implementation complete, proceeding with piece placement
-</example>
+  </example>
 
 <example type="invalid">
 Chess UI Story
 
 todo:
+
 - make board
 - add pieces
 - make it work
-</example>
-
+  </example>
