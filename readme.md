@@ -1,14 +1,29 @@
 # Cursor Automatic Rules Generation with Agile Cursor Workflow Template
 
+## IMPORTANT UPDATE NOTE
+
+Cursor changes quite frequently with updates - global rules are now best defined with the alwaysApply: true - but the description field must still always be specified (at least as it seems to be operating now) with v 0.46.x - this might change in 0.47+.
+
+Also - to have the best success with auto generation of rules - update your cursor user or workspace settings to add the following object to the json object (disabling the special ui for .mdc files) - this will cure the issues many have reported around not being able to auto generate and have the file save successfully occasionally.
+
+```json
+"workbench.editorAssociations": {
+    "*.mdc": "default"
+  }
+```
+
+**One more NOTE to remember** - cursor 'edit' mode will work in generating new files - but does not automatically pick up the rules without adding the rule to the context. Agent mode on the other hand will find the rule, load it, and follow it properly. So for example, if you are in edit mode and ask that a rule be created - you might see a rule get generated at the root of the project or some other random odd location without giving it the 000 rule context - or better yet, doing it with Agent mode.
+
+Also - a new feature .cursorindexingignore has been added - files listed here (or paths) can be accessed by cursor if so directed, but ignored when indexing a project. With this in mind, all templates have been moved to a .cursor/templates folder and are pattern included in the .cursorindexingignore file, but not in the .cursorignore. XNotes remains in the .cursorignore file to serve the original purpose (a place to hold files that need to move elsewhere to be used)
+
 [Video Demo and Walkthrough](https://youtu.be/jEhvwYkI-og) - More cursor videos coming so please subscribe if you like the video!
 
-NOTE: This has been tested with Claud Sonnet 3.5 - YMMV with other models reliability.
+NOTE: This has been tested with Claud Sonnet 3.5, 3.7 and 3.7 thinking - YMMV with other models reliability.
 
 This is a template for establishing automatic generation of self improving granular rules for AI agents using Cursor's rule system. The core philosophy is that users should never need to manually create or update rules - instead, the AI agent handles rule creation and maintenance through natural language requests in a consistent format and style that:
 
 - Ensures Rules are used automatically when appropriate
 - Used specifically if desired on demand
-- Does not suffer from write issues where other rule systems fail
 
 > 💡 **Note:** For a complete guide to the Agile-Cursor Workflow system that helps manage your project with exceptional memory and consistency, see [Agile Workflow Documentation](docs/agile-readme.md).
 
@@ -16,7 +31,7 @@ This is a template for establishing automatic generation of self improving granu
 
 Granular Rules and custom workflows are the key to getting the most out of the AI in composer mode - and with this you can automatically generate and maintain rules rapidly so your agent constantly improves and learns from its mistakes.
 
-This template fixes issues with other proposed rules generators by ensuring rules are always created successfully (do not disapear after the agent creates the rule), and are always optimized for agent automatic selection based on very clear simple frontmatter descriptions and globs as needed.
+This template fixes issues with other proposed rules generators by ensuring rules are always created successfully (do not disappear after the agent creates the rule), and are always optimized for agent automatic selection based on very clear simple frontmatter descriptions and globs as needed.
 
 Also a lot of research has gone into the best way to format rules - as there are so many competing and half baked theories - through a lot of research, mining forums and studies, the official docs for Claude prompt engineering, Cline recommendations, cursor developer comments in reddit and forums, the rules will follow a general format of:
 
@@ -27,7 +42,7 @@ Also a lot of research has gone into the best way to format rules - as there are
 - Keep rules as short as possible while being maximally effective
 - Include examples of good and bad patterns in rules as this is a big aid to the AI Agent LLM in understanding the rule and applying it correctly
 
-## Quick Start A - Starting a New Project with the Agile Workflow and Rules Generator already in place!
+## Quick Start A - Starting a New Project with the Agile Workflow and Rules Generator already in place
 
 This will set up a brand new project folder with cursor rules and agile workflow documentation already in place, along with a starter prompt to kick off your new project with the agile workflow!
 

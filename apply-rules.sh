@@ -13,7 +13,7 @@ TARGET_DIR="$1"
 if [ ! -d "$TARGET_DIR" ]; then
     echo "📁 Creating new project directory: $TARGET_DIR"
     mkdir -p "$TARGET_DIR"
-    
+
     # Initialize readme for new project
     cat > "$TARGET_DIR/README.md" << 'EOL'
 # New Project
@@ -27,9 +27,16 @@ fi
 # Create .cursor/rules directory if it doesn't exist
 mkdir -p "$TARGET_DIR/.cursor/rules"
 
+# Create .cursor/templates directory if it doesn't exist
+mkdir -p "$TARGET_DIR/.cursor/templates"
+
 # Copy core rule files
 echo "📦 Copying core rule files..."
 cp -n .cursor/rules/*.mdc "$TARGET_DIR/.cursor/rules/"
+
+# Copy template files
+echo "📦 Copying template files..."
+cp -r .cursor/templates/* "$TARGET_DIR/.cursor/templates/"
 
 # Create docs directory if it doesn't exist
 mkdir -p "$TARGET_DIR/docs"
@@ -52,20 +59,25 @@ This project has been updated to use the auto rule generator from [cursor-auto-r
 ## Workflow Integration Options
 
 ### 1. Automatic Rule Application (Recommended)
-The core workflow rules are automatically installed in `.cursor/rules/`:
-- `901-prd.mdc` - Product Requirements Document standards
-- `902-arch.mdc` - Architecture documentation standards
-- `903-story.mdc` - User story standards
-- `801-workflow-agile.mdc` - Complete Agile workflow (optional)
+The core workflow rule is automatically installed in `.cursor/rules/`:
+- `000-cursor-rules.mdc` - Core cursor rules
+- `100-git-workflow.mdc` - Git workflow rules
+- `801-workflow-agile.mdc` - Complete Agile workflow
+
+The templates for generating the PRD, Architecture, and User Stories are in `.cursor/templates/`:
+- `template-prd.md` - PRD template
+- `template-arch.md` - Architecture template
+- `template-story.md` - User Story template
 
 These rules are automatically applied when working with corresponding file types.
 
 ### 2. Notepad-Based Workflow
-For a more flexible approach, use the templates in `xnotes/`:
+For a more flexible approach, use the templates in `xnotes/notepads/`:
 1. Enable Notepads in Cursor options
 2. Create a new notepad (e.g., "agile")
 3. Copy contents from `xnotes/workflow-agile.md`
 4. Use \`@notepad-name\` in conversations
+5. Do the same for the other templates in `xnotes/notepads/`
 
 > 💡 **Tip:** The Notepad approach is ideal for:
 > - Initial project setup
@@ -79,13 +91,12 @@ For a more flexible approach, use the templates in `xnotes/`:
 2. Choose your preferred workflow approach
 3. Start using the AI with confidence!
 
-For demos and tutorials, visit: [BMad Code Videos](https://youtube.com/bmadcode)
 EOL
 
 # Update .gitignore if needed
 if [ -f "$TARGET_DIR/.gitignore" ]; then
-    if ! grep -q "\.cursor/rules/_\*\.mdc" "$TARGET_DIR/.gitignore"; then
-        echo -e "\n# Private individual user cursor rules\n.cursor/rules/_*.mdc" >> "$TARGET_DIR/.gitignore"
+    if ! grep -q "\.cursor/rules/\*\.mdc" "$TARGET_DIR/.gitignore"; then
+        echo -e "\n# Private individual user cursor rules\n.cursor/rules/*.mdc" >> "$TARGET_DIR/.gitignore"
     fi
 else
     echo -e "# Private individual user cursor rules\n.cursor/rules/_*.mdc" > "$TARGET_DIR/.gitignore"
@@ -105,9 +116,19 @@ else
     echo -e "# Project notes and templates\nxnotes/" > "$TARGET_DIR/.cursorignore"
 fi
 
+# Create or update .cursorindexingignore
+if [ -f "$TARGET_DIR/.cursorindexingignore" ]; then
+    if ! grep -q "^\.cursor/templates/" "$TARGET_DIR/.cursorindexingignore"; then
+        echo -e "\n# Templates - accessible but not indexed\n.cursor/templates/" >> "$TARGET_DIR/.cursorindexingignore"
+    fi
+else
+    echo -e "# Templates - accessible but not indexed\n.cursor/templates/" > "$TARGET_DIR/.cursorindexingignore"
+fi
+
 echo "✨ Deployment Complete!"
 echo "📁 Core rules: $TARGET_DIR/.cursor/rules/"
-echo "📝 Notepad templates: $TARGET_DIR/xnotes/"
+echo "📁 Templates: $TARGET_DIR/.cursor/templates/"
+echo "📝 Notepad templates: $TARGET_DIR/xnotes/notepads/"
 echo "📄 Documentation: $TARGET_DIR/docs/workflow-rules.md"
 echo "🔒 Updated .gitignore and .cursorignore"
 echo ""
@@ -116,4 +137,4 @@ echo "1. Review the documentation in docs/workflow-rules.md"
 echo "2. Choose your preferred workflow approach"
 echo "3. Enable Cursor Notepads if using the flexible workflow option"
 echo "4. To start a new project, use xnotes/project-idea-prompt.md as a template"
-echo "   to craft your initial message to the AI agent" 
+echo "   to craft your initial message to the AI agent"

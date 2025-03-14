@@ -29,7 +29,11 @@ Story-{M}: {Story Title}
 - Complete
 - Cancelled
 
-#### 4. Context
+#### 4. Branch
+
+- Branch: `feature/epic-{n}-story-{m}-{feature-name}`
+
+#### 5. Context
 
 - Background information
 - Current state
@@ -38,11 +42,15 @@ Story-{M}: {Story Title}
 - Business drivers
 - Relevant history from previous stories
 
-#### 5. Estimation
+#### 6. Estimation
 
 Story Points: {Story Points (1 SP = 1 day of Human Development = 10 minutes of AI development)}
 
-#### 6. Tasks
+#### 7. Tasks
+
+##### Required Setup
+
+- [ ] Create branch from `develop` using naming convention before starting work
 
 ##### Task Groups
 
@@ -56,34 +64,34 @@ Note:
 - Use ~~skipped/cancelled items~~
 - Follow TDD - Start with Writing Tests Subtask
 
-### 7. Additional Sections
+#### 8. Additional Sections
 
-#### Constraints
+##### Constraints
 
 - List any technical or business constraints
 
-#### Data Models / Schema
+##### Data Models / Schema
 
 - Database schemas
 - API request/response models
 - Interfaces/types
 
-#### Structure
+##### Structure
 
 - Module organization
 - File structure plan
 
-#### Diagrams
+##### Diagrams
 
 - Mermaid diagrams as needed
 
-#### Dev Notes
+##### Dev Notes
 
 - Implementation commentary
 - Important considerations
 - Technical decisions
 
-#### Chat Command Log
+##### Chat Command Log
 
 - Commands from User
 - Agent Question and Users Response
@@ -103,6 +111,10 @@ Note:
 ## Status
 
 In Progress
+
+## Branch
+
+- Branch: `feature/epic-1-story-2-chessboard-ui`
 
 ## Context
 
